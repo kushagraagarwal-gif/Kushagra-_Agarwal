@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kushagra Fitness</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: url('https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      color: white;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 60px;
+      margin-right: 15px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+
+    nav ul li {
+      margin-left: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    nav ul li a:hover {
+      color: lightgray;
+    }
+
+    .buttons button {
+      margin-left: 15px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      background-color: black;
+      color: white;
+      cursor: pointer;
+    }
+
+    .buttons button:hover {
+      background-color: grey;
+    }
+
+    .form-section {
+      position: absolute;
+      top: 50%;
+      left: 70px;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 15px;
+      width: 300px;
+    }
+
+    .form-section h2 {
+      margin-bottom: 20px;
+    }
+
+    .form-section input {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .form-section button {
+      width: 100%;
+      padding: 10px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .form-section button:hover {
+      background-color: darkred;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="https://th.bing.com/th/id/OIP.OI14akhcCi07jui5pA1b0gAAAA?w=170&h=183&c=7&r=0&o=5&dpr=1.4&pid=1.7" alt="Logo">
+      <h2>Kushagra Fitness</h2>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="buttons">
+      <button>Call us now</button>
+      <button>Email us</button>
+    </div>
+  </header>
+
+  <div class="form-section">
+    <h2>Join the best GYM in your city</h2>
+    <form id="gymForm">
+      <input type="text" id="name" placeholder="Enter your name" required />
+      <input type="text" id="age" placeholder="Enter your Age" required />
+      <input type="text" id="gender" placeholder="Enter your Gender" required />
+      <input type="text" id="address" placeholder="Enter your Address" required />
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('gymForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const age = document.getElementById('age').value;
+      const gender = document.getElementById('gender').value;
+      const address = document.getElementById('address').value;
+
+      const newWindow = window.open('', '_blank');
+      newWindow.document.write(`
+        <html>
+          <head>
+            <title>Submitted Info</title>
+            <style>
+              body {
+                font-family: Arial;
+                background: #111;
+                color: white;
+                padding: 30px;
+              }
+              h2 {
+                color: red;
+              }
+              p {
+                font-size: 18px;
+              }
+            </style>
+          </head>
+          <body>
+            <h2>Submitted Information</h2>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Age:</strong> ${age}</p>
+            <p><strong>Gender:</strong> ${gender}</p>
+            <p><strong>Address:</strong> ${address}</p>
+          </body>
+        </html>
+      `);
+      newWindow.document.close();
+    });
+  </script>
+</body>
+</html>
